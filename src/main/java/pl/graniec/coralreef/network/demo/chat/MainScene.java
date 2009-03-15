@@ -28,12 +28,44 @@
  */
 package pl.graniec.coralreef.network.demo.chat;
 
+import pulpcore.animation.Easing;
+import pulpcore.animation.Timeline;
 import pulpcore.scene.Scene2D;
+import pulpcore.sprite.ImageSprite;
 
 /**
  * @author Piotr Korzuszek <piotr.korzuszek@gmail.com>
  *
  */
 public class MainScene extends Scene2D {
-
+	
+	private static final String BG_RESOURCE = "/pl/graniec/coralreef/network/demo/chat/resources/bg.png";
+	private static final String FRAMES_RESOURCE = "/pl/graniec/coralreef/network/demo/chat/resources/frames.png";
+	
+	private ImageSprite background;
+	private ImageSprite frames;
+	
+	final private Timeline timeline = new Timeline();
+	
+	@Override
+	public void load() {
+		background = new ImageSprite(BG_RESOURCE, 0, 0);
+		frames = new ImageSprite(FRAMES_RESOURCE, 0, 0);
+		
+		frames.alpha.set(0);
+		
+		add(background);
+		add(frames);
+		
+		timeline.animate(background.alpha, 0, 255, 1000);
+		timeline.animate(frames.alpha, 0, 255, 1000, Easing.NONE, 1000);
+		
+		timeline.play();
+		
+	}
+	
+	@Override
+	public void update(int elapsedTime) {
+		timeline.update(elapsedTime);
+	}
 }

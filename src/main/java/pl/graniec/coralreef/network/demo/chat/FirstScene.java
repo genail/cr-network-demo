@@ -30,7 +30,7 @@ package pl.graniec.coralreef.network.demo.chat;
 
 
 import pl.graniec.pulpcore.desktop.SplashScene;
-import pulpcore.animation.Timeline;
+import pulpcore.Stage;
 import pulpcore.scene.Scene2D;
 
 /**
@@ -40,8 +40,6 @@ import pulpcore.scene.Scene2D;
 public class FirstScene extends Scene2D {
 
 	
-	private final Timeline timeline = new Timeline();
-	
 	public FirstScene() {
 	}
 	
@@ -50,14 +48,11 @@ public class FirstScene extends Scene2D {
 		final MainScene mainScene = new MainScene();
 		
 		final SplashScene splashScreen = new SplashScene(mainScene);
-		
-		timeline.setScene(splashScreen, 0);
-		timeline.play();
+		Stage.replaceScene(splashScreen);
 	}
 	
 	@Override
 	public void update(int elapsedTime) {
-		timeline.update(elapsedTime);
 	}
 	
 }

@@ -29,6 +29,7 @@
 package pl.graniec.coralreef.network.demo.chat;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import pl.graniec.pulpcore.desktop.CoreApplication;
 
@@ -42,7 +43,11 @@ public class Launcher {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new CoreApplication(new HashMap<String, String>()).run();
+		
+		final Map<String, String> properties = new HashMap<String, String>();
+		properties.put(CoreApplication.FIRST_SCENE_CLASS_PROPERTY, FirstScene.class.getName());
+		
+		new CoreApplication(properties).run();
 	}
 
 }
