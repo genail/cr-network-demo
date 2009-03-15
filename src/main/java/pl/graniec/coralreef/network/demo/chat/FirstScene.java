@@ -45,10 +45,11 @@ public class FirstScene extends Scene2D {
 	
 	@Override
 	public void load() {
-		final MainScene mainScene = new MainScene();
+		final ChatScene mainScene = new ChatScene();
 		
-		final SplashScene splashScreen = new SplashScene(mainScene);
-		Stage.replaceScene(splashScreen);
+//		final SplashScene splashScreen = new SplashScene(mainScene);
+//		Stage.replaceScene(splashScreen);
+		Stage.replaceScene(mainScene);
 	}
 	
 	@Override
