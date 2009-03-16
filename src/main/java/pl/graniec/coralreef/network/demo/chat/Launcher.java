@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pl.graniec.pulpcore.desktop.CoreApplication;
+import pulpcore.Build;
 
 /**
  * @author Piotr Korzuszek <piotr.korzuszek@gmail.com>
@@ -43,6 +44,8 @@ public class Launcher {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
+		System.out.println(Build.DEBUG);
 		
 		final Map<String, String> properties = new HashMap<String, String>();
 		properties.put(CoreApplication.FIRST_SCENE_CLASS_PROPERTY, FirstScene.class.getName());
