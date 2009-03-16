@@ -29,6 +29,8 @@
 package pl.graniec.coralreef.network.demo.chat;
 
 
+import pulpcore.CoreSystem;
+import pulpcore.Input;
 import pulpcore.animation.Color;
 import pulpcore.animation.Easing;
 import pulpcore.animation.Timeline;
@@ -56,6 +58,7 @@ public class ChatScene extends Scene2D {
 	
 	int chatLines = 0;
 	private ScrollPane chatScroll;
+	private TextField input;
 	
 	@Override
 	public void load() {
@@ -73,43 +76,43 @@ public class ChatScene extends Scene2D {
 //		chatScroll.add(chatLabel);
 		
 		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
-		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
-		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
-		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
-		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
-		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
-		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
-		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
-		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
-		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
-		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
-		addChatLine("Raz", 0xFFFFFF);
-		addChatLine("Dwa", 0xFFFFFF);
-		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Raz", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Raz", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Raz", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Raz", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Raz", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Raz", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Raz", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Raz", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Raz", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Raz", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
+//		addChatLine("Raz", 0xFFFFFF);
+//		addChatLine("Dwa", 0xFFFFFF);
+//		addChatLine("Trzy", 0xFFFFFF);
 		
-		TextField input = new TextField(
+		input = new TextField(
 				CoreFont.getSystemFont().tint(0xFFFFFF),
 				CoreFont.getSystemFont().tint(0xFF0000),
 				"test",
@@ -131,11 +134,19 @@ public class ChatScene extends Scene2D {
 	@Override
 	public void update(int elapsedTime) {
 		timeline.update(elapsedTime);
+		
+		if(Input.isPressed(Input.KEY_ENTER) && !input.getText().isEmpty()) {
+			addChatLine(input.getText(), 0xFFFFFFFF);
+			input.setText("");
+		}
 	}
 	
 	public void addChatLine(String text, int color) {
 		Label label = new Label(CoreFont.getSystemFont().tint(color), text, 0, 0);
 		label.y.set((label.height.get() + 3) * chatLines);
+		
+		label.alpha.set(0);
+		timeline.animate(label.alpha, 0, 255, 300, Easing.NONE, timeline.getTime());
 		
 		chatScroll.add(label);
 		

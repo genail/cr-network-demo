@@ -45,8 +45,6 @@ public class Launcher {
 	 */
 	public static void main(String[] args) {
 
-		System.out.println(Build.DEBUG);
-		
 		final Map<String, String> properties = new HashMap<String, String>();
 		properties.put(CoreApplication.FIRST_SCENE_CLASS_PROPERTY, FirstScene.class.getName());
 		
