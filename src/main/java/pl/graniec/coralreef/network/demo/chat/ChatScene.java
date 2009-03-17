@@ -155,9 +155,9 @@ public class ChatScene extends Scene2D {
 				nick = nickInput.getText();
 				nickLabel.setText("Hello " + nick + "!");
 				
-				timeline.animate(nickQuestionFrame.alpha, 255, 0, 500, Easing.STRONG_OUT, timeline.getTime()+700);
-				timeline.animate(nickLabel.alpha, 255, 0, 500, Easing.STRONG_OUT, timeline.getTime()+700);
-				timeline.animate(nickInput.alpha, 255, 0, 500, Easing.STRONG_OUT, timeline.getTime()+700);
+				timeline.animate(nickQuestionFrame.alpha, 255, 0, 500, Easing.NONE, timeline.getTime()+700);
+				timeline.animate(nickLabel.alpha, 255, 0, 500, Easing.NONE, timeline.getTime()+700);
+				timeline.animate(nickInput.alpha, 255, 0, 500, Easing.NONE, timeline.getTime()+700);
 				
 				nickInput.enabled.set(false);
 				input.setFocus(true);

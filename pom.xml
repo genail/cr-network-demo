@@ -1,4 +1,4 @@
-<!-- Coral Reef Network Library -->
+<!-- Coral Reef Network Library Demo -->
 
 <project
     xmlns="http://maven.apache.org/POM/4.0.0"
@@ -21,7 +21,7 @@
     
     <name>Coral Reef Network Library Demo</name>
     <url>http://graniec.pl/</url>
-
+    
     <dependencies>
     
         <!-- Network Library -->
