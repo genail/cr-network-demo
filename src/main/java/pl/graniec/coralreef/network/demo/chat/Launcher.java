@@ -32,7 +32,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pl.graniec.pulpcore.desktop.CoreApplication;
-import pulpcore.Build;
 
 /**
  * @author Piotr Korzuszek <piotr.korzuszek@gmail.com>
