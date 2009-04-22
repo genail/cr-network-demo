@@ -29,7 +29,7 @@
 package pl.graniec.coralreef.network.demo.chat;
 
 
-import pl.graniec.pulpcore.desktop.SplashScene;
+import pl.graniec.coralreef.pulpcore.desktop.SplashScene;
 import pulpcore.Stage;
 import pulpcore.scene.Scene2D;
 
